@@ -5,7 +5,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     main: './src/index.js'
   },
@@ -17,55 +17,49 @@ module.exports = {
     hotOnly: true,
   },
   module: {
-    rules: [
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name]_[hash].[ext]',
-              outputPath: 'images/',
-              limit: 2048
-            }
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          name: '[name]_[hash].[ext]',
+          outputPath: 'images/',
+          limit: 2048
+        }
+      }]
+    }, {
+      test: /\.(eot|svg|ttf|woff)$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      }]
+    }, {
+      test: /\.scss$/,
+      use: [
+        'style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2
+            // modules: true
           }
-        ]
-      },
-      {
-        test: /\.(eot|svg|ttf|woff)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2
-              // modules: true
-            }
-          },
-          'sass-loader',
-          'postcss-loader'
-        ]
-      },
-      {
-        test: /\.css?$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader'
-        ]
-      }
-    ]
+        },
+        'sass-loader',
+        'postcss-loader'
+      ]
+    }, {
+      test: /\.css?$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader'
+      ]
+    }]
   },
   plugins: [
     new HtmlWebpackPlugin({
