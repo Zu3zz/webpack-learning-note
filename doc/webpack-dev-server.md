@@ -1,6 +1,8 @@
 # webpack-dev-server
 
-## 为了不用每一次改变代码都需要再重新使用 webpack 打包一次 可以使用一下三种方法
+## 打包的时候为了能够加快速度
+
+### 为了不用每一次改变代码都需要再重新使用 webpack 打包一次 可以使用一下三种方法
 
 1. 在 package.json 文件中配置命令`"watch": "webpack --watch"`
     这样在运行 `yarn run watch`时可以实现自动监听

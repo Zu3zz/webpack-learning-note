@@ -8,7 +8,7 @@
 6. 对于use use所对应的是一个数组 数组中分别需要一个对象，第一个对象是loader。用来申明所需要的loader具体是什么 常用的loader下面有列举
 7. loader下还需要声明该loader所需要的一些配置参数
 
-### 共有一下几种常见loader
+## 共有一下几种常见loader
 
 1. file-loader
    * icon-font字体打包
@@ -56,5 +56,5 @@
         ]
     }]
   }
-
   ```
+  
