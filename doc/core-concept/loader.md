@@ -26,12 +26,17 @@
   ```javascript
   module: {
     rules:[{
+      // 检测文件类型是否匹配
       test: /\.(png|jpg|gif)$/,
       use: [{
+        // 使用的loader类型
         loader: 'url-loader',
         options: {
+          // 打包之后文件的类型
           name: '[name].[ext]',
+          // 打包之后输出的路径
           outputPath: 'images/',
+          // 打包大小的限制
           limit: 2048
         }
       }]
@@ -41,6 +46,7 @@
         loader: 'file-loader'
       }]
     },{
+        // scss文件类型特殊
         test: /\.scss$/,
         use: [
           'style-loader',

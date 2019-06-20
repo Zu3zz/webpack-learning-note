@@ -5,7 +5,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: {
     main: './src/index.js'
   },
@@ -68,6 +68,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
+  optimization: {
+    usedExports: true
+  },
   output: {
     // publicPath: '/',
     filename: '[name].bundle.js',
