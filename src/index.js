@@ -1,4 +1,4 @@
 // import "@babel/polyfill"
+import _ from 'lodash'
 
-import {add} from './math'
-add()
+console.log(_.join(['a','b','c'], '**'))

@@ -4,7 +4,8 @@
 
 - 在 webpack.config.js 中定义如下
 
-  ```js
+  ```js 
+  // webpack.config.js
   // 如果在mode: production中 需要添加如下的配置
   plugins:[
     new xxxxxx,
@@ -20,7 +21,8 @@
 
   - 添加这个属性是因为有些模块没有导出内容 所以对这种没有导出文件的需要进行特殊设置 比如@babel/polyfill 或者一些css文件
 
-  ```js
+  ```js 
+  // package.json
   "sideEffects": false
   // e.g: "sideEffects": ["*.css", "@babel/polyfill"]
   ```

@@ -1,20 +1,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const webpack = require('webpack')
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
   entry: {
+    lodash: './src/lodash.js',
     main: './src/index.js'
-  },
-  devServer: {
-    contentBase: './dist',
-    open: true,
-    port: 8080,
-    hot: true,
-    hotOnly: true,
   },
   module: {
     rules: [{
@@ -65,15 +56,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new CleanWebpackPlugin()
   ],
-  optimization: {
-    usedExports: true
-  },
   output: {
     // publicPath: '/',
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist')
   }
 }
